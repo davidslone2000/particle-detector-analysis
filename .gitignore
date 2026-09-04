@@ -1,6 +1,8 @@
 .venv/
-.ipynb_checkpoints/
+**/.ipynb_checkpoints/
 __pycache__/
 *.pyc
 *.root
 .DS_Store
+
+particle_detector_python_practice.ipynb

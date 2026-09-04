@@ -1,10 +1,16 @@
 # Monte Carlo Particle Detector Analysis with Python
 
-This project analyzes Monte Carlo simulations of proton hits on a segmented silicon detector for the BL3 neutron-lifetime experiment. I examine how changing the detector position affects the spatial distribution of proton hits and how those hits are distributed across the detector’s six-ring, 62-pixel geometry.
+This project analyzes Monte Carlo simulations of proton hits on a segmented silicon detector for the BL3 neutron-lifetime experiment. Because neutron beta decay produces a proton, the detected proton rate is directly connected to the neutron decay rate used in the lifetime measurement. I examine how changing the detector position affects the spatial distribution of proton hits and how those hits are distributed across the detector’s six-ring, 62-pixel geometry.
 
-The analysis processes approximately **four million simulated events** stored in CERN ROOT files using Python, `uproot`, NumPy, pandas, and Matplotlib.
+The analysis processes approximately **four million simulated events** stored in ROOT files using Python, `uproot`, NumPy, pandas, and Matplotlib.
 
 ![Proton-hit distributions across detector configurations](figures/detector_configuration_comparison.png)
+
+## Related presentation
+
+This analysis grew out of my undergraduate research on BL3 proton tracking with Geant4.
+
+[View the research poster](https://www.pa.uky.edu/~crawford/reu/products_2023/endterm_posters/David_Slone_Poster.pdf)
 
 ## Analysis questions
 
@@ -23,7 +29,7 @@ This project investigates three questions:
 
 ## Analysis workflow
 
-The simulation data are stored in ROOT files. I use `uproot` to read the event data directly into Python and NumPy for the numerical analysis.
+The simulation data is stored in ROOT files. I use `uproot` to read the event data directly into Python and NumPy for the numerical analysis.
 
 The workflow includes:
 
@@ -90,9 +96,9 @@ The implementation uses vectorized NumPy operations rather than an event-by-even
 
 The pixel-level results reveal variation that is hidden by ring averages, especially in the outer portions of the detector. This demonstrates why analyzing the detector at both ring and pixel resolution provides a more complete description of its simulated response.
 
-## Reproducibility
+## Implementation
 
-The notebook is organized into reusable functions for:
+The notebook uses Python and Numpy for:
 
 * loading and validating ROOT data;
 * selecting detector-hit events;
@@ -103,8 +109,6 @@ The notebook is organized into reusable functions for:
 * calculating normalized proton rates;
 * generating portfolio figures.
 
-The notebook can be executed sequentially from top to bottom after the four simulation files are placed in the local `data/` directory.
-
 ## Repository structure
 
 ```text
@@ -113,42 +117,23 @@ particle-detector-analysis/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
-├── data/
-│   └── README.md
 └── figures/
     ├── detector_configuration_comparison.png
+    ├── ring_average_rates.png
     └── nominal_pixel_rates.png
 ```
 
-## Running the analysis
-
-Create and activate a Python virtual environment:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-Install the required packages:
-
-```bash
-pip install -r requirements.txt
-```
-
-Place the four ROOT files in the `data/` directory and launch JupyterLab:
-
-```bash
-jupyter lab
-```
-
-Open `particle_detector_analysis.ipynb` and run the notebook from top to bottom. The notebook also generates the two figures displayed in this README.
 
 ## Data availability
 
-The analysis uses four ROOT simulation files corresponding to the Nominal, 3 cm, 6 cm, and 15 cm detector configurations.
+The analysis uses four ROOT simulation files corresponding to the Nominal,
+3 cm, 6 cm, and 15 cm detector configurations.
 
-The files are excluded from Git because of their size and because raw research data should only be redistributed when permission is clear. The expected filenames and directory structure are documented in `data/README.md`.
+These simulation files are not distributed with this repository. The
+notebook therefore serves as a documented record of the analysis and
+includes the saved tables, numerical results, and figures generated from
+the simulations.
 
 ## Tools
 
-**Python · NumPy · pandas · Matplotlib · uproot · Jupyter · CERN ROOT data**
+**Python · NumPy · pandas · Matplotlib · uproot · Jupyter · ROOT data**

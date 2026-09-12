@@ -2,7 +2,7 @@
 
 This project analyzes Monte Carlo simulations of proton hits on a segmented silicon detector for the BL3 neutron-lifetime experiment. Because neutron beta decay produces a proton, the detected proton rate is directly connected to the neutron decay rate used in the lifetime measurement. I examine how changing the detector position affects the spatial distribution of proton hits, how those hits are distributed across the detector’s six-ring, 62-primary-pixel geometry, and whether backscattered protons return to the detector's active area.
 
-The detector-position analysis processes approximately **four million simulated events**, and the backscattering analysis examines an additional **one million events**. The simulation data is stored in ROOT files and analyzed using Python, `uproot`, NumPy, pandas, and Matplotlib.
+The detector-position analysis processes approximately **four million simulated events**, and the backscattering analysis examines an additional **one million events**. The simulation data is stored in ROOT files and analyzed using Python, uproot, NumPy, pandas, and Matplotlib.
 
 ![Proton-hit distributions across detector configurations](figures/detector_configuration_comparison.png)
 
